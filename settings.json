@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMANTAL_AGENT_TEAMS": "true"
+  },
   "statusLine": {
     "type": "command",
     "command": "bash /home/rdmoon/.claude/statusline-command.sh"
