@@ -22,6 +22,11 @@ rate      = data.get('rate_limits') or {}
 seven     = rate.get('seven_day') or {}
 week_pct  = seven.get('used_percentage')
 
+five      = rate.get('five_hour') or {}
+five_pct  = five.get('used_percentage')
+five_used = five.get('tokens_used')
+five_lim  = five.get('tokens_limit')
+
 BAR_W = 16
 
 def bar(pct, width=BAR_W):
@@ -35,10 +40,19 @@ def col(pct):
 
 ctx_bar  = f"{col(used_pct)}{bar(used_pct)}{RESET} {used_pct}% ({used_tok:,}/{ctx_size:,})"
 
+if five_pct is not None:
+    p = int(five_pct)
+    if five_used is not None and five_lim is not None:
+        five_bar = f"{col(p)}{bar(p)}{RESET} {p}% ({five_used:,}/{five_lim:,}) 5h"
+    else:
+        five_bar = f"{col(p)}{bar(p)}{RESET} {p}% 5h"
+else:
+    five_bar = f"{DIM}{'░' * BAR_W}{RESET} --% 5h"
+
 if week_pct is not None:
     w = int(week_pct)
-    week_bar = f"{col(w)}{bar(w)}{RESET} {w}%"
+    week_bar = f"{col(w)}{bar(w)}{RESET} {w}% 7d"
 else:
-    week_bar = f"{DIM}{'░' * BAR_W}{RESET} --%"
+    week_bar = f"{DIM}{'░' * BAR_W}{RESET} --% 7d"
 
-print(f"{start_str}  |  {ctx_bar}  |  {week_bar}")
+print(f"{start_str}  |  {ctx_bar}  |  {five_bar}  |  {week_bar}")

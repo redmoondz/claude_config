@@ -12,14 +12,15 @@ Personal Claude Code configuration — settings, statusline, and plugins.
 
 ## Status bar
 
-The bottom status bar shows three segments in one line:
+The bottom status bar shows four segments in one line:
 
 ```
-30.05.2026 14:30  |  ▓▓▓░░░░░░░░░░░░░ 23% (46,000/200,000)  |  ▓▓▓▓▓▓░░░░░░░░░░ 41%
+30.05.2026 14:30  |  ▓▓▓░░░░░░░░░░░░░ 23% (46,000/200,000)  |  ▓▓░░░░░░░░░░░░░░ 12% 5h  |  ▓▓▓▓▓▓░░░░░░░░░░ 41% 7d
 ```
 
 - **Date** — session start time
 - **Context bar** — tokens used in the current context window vs the model limit (200k by default)
+- **5-hour bar** — Claude.ai rate limit consumption for the rolling 5-hour window (Pro/Max only)
 - **Weekly bar** — Claude.ai rate limit consumption for the 7-day rolling window (Pro/Max only)
 
 Color coding: green → yellow at 70% → red at 90%.
