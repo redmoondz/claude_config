@@ -1,0 +1,17 @@
+# Auth & secrets
+.credentials.json
+
+# Session & runtime data
+history.jsonl
+mcp-needs-auth-cache.json
+lmstudio.settings.json
+paste-cache/
+backups/
+file-history/
+projects/
+tasks/
+plans/
+cache/
+
+# OS
+.DS_Store
